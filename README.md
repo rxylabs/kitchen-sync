@@ -17,11 +17,10 @@ Then run the app
     npm start
 
 Then fire up `localhost:3000`
+Then fire up another tab with `localhost:3000/monitor.html`
 
 
 ## To Do
 
 1. Style it
-2. Hide controls for the monitors (via url? or select?)
-3. More fields??
-4. ...
+2. ....
