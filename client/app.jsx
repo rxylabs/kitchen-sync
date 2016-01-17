@@ -16,12 +16,11 @@ var Order = React.createClass({
 	render() {
 		return (
 			<div className='order'>
-        <div className='text'>
-          <strong>{this.props.text} - </strong> 
-          <span>{this.props.timestamp}</span>		
+        <div className='text'>{this.props.text}</div>
+        <div className='button-box'>
+          <div className='btn ready' onClick={this.toggleOrderStatus}>{this.props.ready ? "Not Ready" : "Ready"}</div>
+          <div className='btn delete' onClick={this.handleOrderDelete}>Delete</div>
         </div>
-        <button className='btn ready' onClick={this.toggleOrderStatus}>{this.props.ready ? "Not Ready" : "Ready"}</button>
-        <button className='btn delete' onClick={this.handleOrderDelete}>Delete</button>
 			</div>
 		);
 	}
@@ -118,6 +117,7 @@ var OrderForm = React.createClass({
 						onChange={this.changeHandler}
 						value={this.state.text}
 					/>
+          <div className="btn submit" onClick={this.handleSubmit}>Add</div>
 				</form>
 			</div>
 		);
@@ -166,7 +166,7 @@ var KitchenSyncApp = React.createClass({
 	handleOrderSubmit(order) {
 		var {orders} = this.state;
 
-		orders.push(order);
+		orders.unshift(order);
 		this.setState({orders});
 		socket.emit('update:state', orders);
 	},

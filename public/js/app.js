@@ -23,27 +23,21 @@ var Order = React.createClass({
       React.createElement(
         'div',
         { className: 'text' },
+        this.props.text
+      ),
+      React.createElement(
+        'div',
+        { className: 'button-box' },
         React.createElement(
-          'strong',
-          null,
-          this.props.text,
-          ' - '
+          'div',
+          { className: 'btn ready', onClick: this.toggleOrderStatus },
+          this.props.ready ? "Not Ready" : "Ready"
         ),
         React.createElement(
-          'span',
-          null,
-          this.props.timestamp
+          'div',
+          { className: 'btn delete', onClick: this.handleOrderDelete },
+          'Delete'
         )
-      ),
-      React.createElement(
-        'button',
-        { className: 'btn ready', onClick: this.toggleOrderStatus },
-        this.props.ready ? "Not Ready" : "Ready"
-      ),
-      React.createElement(
-        'button',
-        { className: 'btn delete', onClick: this.handleOrderDelete },
-        'Delete'
       )
     );
   }
@@ -155,7 +149,12 @@ var OrderForm = React.createClass({
         React.createElement('input', {
           onChange: this.changeHandler,
           value: this.state.text
-        })
+        }),
+        React.createElement(
+          'div',
+          { className: 'btn submit', onClick: this.handleSubmit },
+          'Add'
+        )
       )
     );
   }
@@ -205,7 +204,7 @@ var KitchenSyncApp = React.createClass({
   handleOrderSubmit: function handleOrderSubmit(order) {
     var orders = this.state.orders;
 
-    orders.push(order);
+    orders.unshift(order);
     this.setState({ orders: orders });
     socket.emit('update:state', orders);
   },
