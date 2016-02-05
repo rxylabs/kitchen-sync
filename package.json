@@ -1,6 +1,17 @@
 {
   "name": "kitchen-sync",
-  "version": "0.0.1",
+  "version": "0.1.0",
+  "dependencies": {
+    "express": "^4.13.1",
+    "react": "^0.13.3",
+    "socket.io": "^1.3.5",
+    "babelify": "^6.1.3",
+    "browserify": "^10.2.6",
+    "watchify": "*"
+  },
+  "engines": {
+    "node": "4.2.6"
+  },
   "scripts": {
     "build": "npm run build-app && npm run build-monitor",
     "build-app": "browserify ./src/app.jsx -t babelify --outfile ./public/js/app.js",
@@ -8,16 +19,7 @@
     "watch": "npm run watch-app && npm run watch-monitor",
     "watch-app": "watchify ./src/app.jsx -v -o ./public/js/app.js -t babelify",
     "watch-monitor": "watchify ./src/monitor.jsx -v -o ./public/js/monitor.js -t babelify",
-    "start": "node app.js"
-  },
-  "dependencies": {
-    "express": "^4.13.1",
-    "react": "^0.13.3",
-    "socket.io": "^1.3.5"
-  },
-  "devDependencies": {
-    "babelify": "^6.1.3",
-    "browserify": "^10.2.6",
-    "watchify": "*"
+    "start": "node app.js",
+    "postinstall":"mkdir ./public/js && npm run build"
   }
 }
