@@ -30,7 +30,7 @@ var MonitorSyncApp = React.createClass({
       <div className="orders-box">
         <div className="heading">
           <img src="/img/logo.svg" /> 
-          <h2>Orders ready:</h2>
+          <h2>Orders ready</h2>
         </div>
         <div className="orders">
           {
