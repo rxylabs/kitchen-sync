@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -9,17 +13,50 @@ body {
   color: #333;
 }
 
-.orders-box {
+#app {
+  height: 100%;
   width: 100%;
-  padding: 2%;
+  background: url('/img/bg.jpg') repeat;
+  overflow: hidden;
+}
+
+.orders-box {
+  width: 80%;
+  margin: 200px auto 0 auto;
+  height: 100%;
+  background: url('/img/contentbg.jpg') repeat;
 }
 
 .order {
-  font-size: 35px;
-  padding: 10px 0;
+  font-size: 40px;
+  padding: 20px;
   text-align: center;
+  word-wrap: break-word;
 }
 
-.orders-box h2 {
-  border-bottom: 2px solid #333;
+.orders {
+  width: 100%;
+  margin-top: 45px;
+}
+
+.heading {
+  background: #3C2221;
+  height: 58px;
+  line-height: 58px;
+}
+
+.heading h2 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #fff;
+  text-transform: capitalize;
+  display: inline;
+  margin-left: 350px;
+}
+
+.heading img {
+  float: left;
+  height: 200px;
+  position: absolute;
+  top: 130px;
 }

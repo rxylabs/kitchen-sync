@@ -10,29 +10,6 @@ var Order = React.createClass({
 	}
 });
 
-var OrderList = React.createClass({
-	render() {
-		return (
-      <div className="orders-box">
-        <h2>Orders ready:</h2>
-        {
-          this.props.orders.map((order, i) => {
-            if (order.ready) {
-              return (
-                <Order
-                  key={i}
-                  text={order.text} 
-                />
-              );
-            }
-          })
-        } 
-      </div>
-		);
-	}
-});
-
-
 var MonitorSyncApp = React.createClass({
 
 	getInitialState() {
@@ -50,11 +27,26 @@ var MonitorSyncApp = React.createClass({
 
 	render() {
 		return (
-			<div>
-        <OrderList
-          orders={this.state.orders}
-        />
-			</div>
+      <div className="orders-box">
+        <div className="heading">
+          <img src="/img/logo.svg" /> 
+          <h2>Orders ready:</h2>
+        </div>
+        <div className="orders">
+          {
+            this.state.orders.map((order, i) => {
+              if (order.ready) {
+                return (
+                  <Order
+                    key={i}
+                    text={order.text} 
+                  />
+                );
+              }
+            })
+          } 
+        </div>
+      </div>
 		);
 	}
 });
