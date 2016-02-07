@@ -14,14 +14,10 @@ body {
   letter-spacing: 2px;
 }
 
-#outer {
+#app {
   height: 1080px;
   background: url('/img/bg.jpg') repeat;
   overflow: hidden;
-}
-
-#app {
-  height:1080px;
 }
 
 .orders-box {
@@ -29,6 +25,7 @@ body {
   margin: 100px auto 0 auto;
   height: 100%;
   background: url('/img/contentbg.jpg') repeat;
+  text-align: right;
 }
 
 .order {
@@ -48,6 +45,7 @@ body {
   background: #3C2221;
   height: 58px;
   line-height: 58px;
+  text-align: left;
 }
 
 .heading h2 {
@@ -55,7 +53,6 @@ body {
   font-weight: normal;
   color: #f1ebd5;
   text-transform: capitalize;
-  text-align: left;
   padding-left: 330px;
 }
 
@@ -64,4 +61,10 @@ body {
   height: 200px;
   position: absolute;
   top: 30px;
+}
+
+.kitchen-sync_logo {
+  position: fixed;
+  bottom: 10px;
+  margin-left: -210px;
 }

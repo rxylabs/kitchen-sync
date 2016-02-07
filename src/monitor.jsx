@@ -44,8 +44,9 @@ var MonitorSyncApp = React.createClass({
                 );
               }
             })
-          } 
+          }
         </div>
+        <img className="kitchen-sync_logo" src="/img/kitchen-sync_logo_arrows.png" />
       </div>
 		);
 	}
