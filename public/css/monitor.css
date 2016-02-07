@@ -14,10 +14,14 @@ body {
   letter-spacing: 2px;
 }
 
-#app {
+#outer {
   height: 1080px;
   background: url('/img/bg.jpg') repeat;
   overflow: hidden;
+}
+
+#app {
+  height:1080px;
 }
 
 .orders-box {
