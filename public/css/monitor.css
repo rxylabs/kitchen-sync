@@ -20,6 +20,30 @@ body {
   overflow: hidden;
 }
 
+div.socialmedia {
+  border: none;
+  overflow: hidden;
+  width: 150px;
+  height: 1080px;
+}
+
+.socialmedia iframe {
+  height: 930px;
+}
+
+#instagram.socialmedia {
+  float: left;
+}
+
+#twitter.socialmedia  {
+  float: right;
+}
+
+.socialmedia .logo {
+    width: 150px;
+    margin-top: -3px;
+}
+
 .orders-box {
   width: 80%;
   margin: 100px auto 0 auto;
