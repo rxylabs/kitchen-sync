@@ -113,11 +113,13 @@ var OrderForm = React.createClass({
 			<div className='order-form'>
 				<h3>Enter order keyword:</h3>
 				<form onSubmit={this.handleSubmit}>
-					<input
-						onChange={this.changeHandler}
-						value={this.state.text}
-					/>
-          <div className="btn submit" onClick={this.handleSubmit}>Add</div>
+          <div className="input-group">
+            <input
+              onChange={this.changeHandler}
+              value={this.state.text}
+            />
+            <div className="submit" onClick={this.handleSubmit}>Add</div>
+          </div>
 				</form>
 			</div>
 		);
@@ -175,6 +177,10 @@ var KitchenSyncApp = React.createClass({
 	render() {
 		return (
 			<div>
+        <div className="heading">
+          <img src="/img/logo.svg" /> 
+          <h2>Order Entry</h2>
+        </div>
 				<OrderForm
 					onOrderSubmit={this.handleOrderSubmit}
 				/>
