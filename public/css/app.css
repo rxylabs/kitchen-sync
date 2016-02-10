@@ -45,80 +45,83 @@ body {
   top: 75px;
 }
 
-.orders,
 .order-form {
-	margin: 15px;
-	border : 1px solid #3C2221;
-	padding: 15px;
+  margin: 40px 20px;
+}
+
+.shadow {
+  box-shadow: 0 2px 7px 1px rgba(0,0,0,0.5);
+}
+
+.orders-box {
+  width: 100%;
+  overflow: hidden;
+  padding: 0 20px;
 }
 
 .order {
-  border: 1px solid #3C2221;
-  padding: 10px;
-  margin: 5px;
-  overflow: hidden;
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
 .text {
+  background: #fff;
   font-size: 25px;
-  line-height: 40px;
-  float: left;
-  display: inline-block;
+  line-height: 50px;
+  padding: 0 15px;
+  flex: 1;
 }
 
 .order .btn {
-  width: 150px;
+  width: 50px;
+  background: #fff;
 }
 
 .btn {
   cursor: pointer;
-  border: 1px solid #3C2221;
-  border-radius: 3px;
-  display: inline-block;
   text-align: center;
-  padding: 10px 20px;
-  margin: 0 10px;
 }
 
-.btn:hover,
-.btn:active {
-  background: #3C2221;
-  color: #fff;
+.ready {
+  margin-right: 10px;
+  font-size: 43px;
+  color: green;
 }
 
-.button-box {
-  float: right;
-  overflow: hidden;
+.delete {
+  margin-left: 10px;
+  font-size: 40px;
+  line-height: 50px;
+  color: red;
 }
 
 .input-group {
-  border: 1px solid #3C2221;
-  border-radius: 3px;
-  background: #fff;
   display: flex;
   flex-direction: row;
   width: 100%;
 }
 
 .input-group input {
-  line-height: 32px;
+  line-height: 50px;
   font-size: 18px;
-  padding: 0 5px;
+  padding: 0 15px;
   outline: none;
   border: none;
-  margin: 0 5px;
+  margin: 0;
   flex: 1;
 }
 
 .input-group .submit {
-  line-height: 32px;
-  font-size: 18px;
-  padding: 0 20px;
-  border-left: 1px solid #3C2221;
-  border-right: 1px solid transparent;
-  border-radius-right: 3px;
+  line-height: 45px;
+  background: #fff;
+  font-size: 40px;
   cursor: pointer;
+  width: 50px;
+  text-align: center;
   float: right;
+  margin-left: 10px;
 }
 
 .input-group .submit:hover,

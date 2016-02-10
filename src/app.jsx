@@ -16,11 +16,9 @@ var Order = React.createClass({
 	render() {
 		return (
 			<div className='order'>
-        <div className='text'>{this.props.text}</div>
-        <div className='button-box'>
-          <div className='btn ready' onClick={this.toggleOrderStatus}>{this.props.ready ? "Not Ready" : "Ready"}</div>
-          <div className='btn delete' onClick={this.handleOrderDelete}>Delete</div>
-        </div>
+        <div className='btn ready shadow' onClick={this.toggleOrderStatus}>{this.props.ready ? '✔' : ''}</div>
+        <div className='text shadow'>{this.props.text}</div>
+        <div className='btn delete shadow' onClick={this.handleOrderDelete}>X</div>
 			</div>
 		);
 	}
@@ -30,46 +28,21 @@ var OrderList = React.createClass({
 	render() {
 		return (
       <div className="orders-box">
-        <div className='orders not-ready'>
-          <h2> Orders in progress: </h2>
-          {
-            this.props.orders.map((order) => {
-              if (!order.ready) {
-                return (
-                  <Order
-                    key={order.id}
-                    text={order.text} 
-                    orderID={order.id}
-                    ready={order.ready}
-                    timestamp={order.timestamp}
-                    toggleOrderStatus={this.props.toggleOrderStatus}
-                    handleOrderDelete={this.props.handleOrderDelete}
-                  />
-                );
-              }
-            })
-          } 
-        </div>
-        <div className='orders ready'>
-          <h2> Orders ready: </h2>
-          {
-            this.props.orders.map((order) => {
-              if (order.ready) {
-                return (
-                  <Order
-                    key={order.id}
-                    text={order.text} 
-                    orderID={order.id}
-                    ready={order.ready}
-                    timestamp={order.timestamp}
-                    toggleOrderStatus={this.props.toggleOrderStatus}
-                    handleOrderDelete={this.props.handleOrderDelete}
-                  />
-                );
-              }
-            })
-          } 
-        </div>
+      {
+        this.props.orders.map((order) => {
+          return (
+            <Order
+              key={order.id}
+              text={order.text} 
+              orderID={order.id}
+              ready={order.ready}
+              timestamp={order.timestamp}
+              toggleOrderStatus={this.props.toggleOrderStatus}
+              handleOrderDelete={this.props.handleOrderDelete}
+            />
+          );
+        })
+      } 
       </div>
 		);
 	}
@@ -93,15 +66,17 @@ var OrderForm = React.createClass({
   },
 
 	handleSubmit(e) {
-		e.preventDefault();
-		var order = {
-      id: this.getUID(),
-			ready: false,
-			text: this.state.text,
-      timestamp: this.getTimeStamp()
-		}
-		this.props.onOrderSubmit(order);	
-		this.setState({ text: '' });
+    e.preventDefault();
+    if (this.state.text !== '') {
+      var order = {
+        id: this.getUID(),
+        ready: false,
+        text: this.state.text,
+        timestamp: this.getTimeStamp()
+      }
+      this.props.onOrderSubmit(order);	
+      this.setState({ text: '' });
+    }
 	},
 
 	changeHandler(e) {
@@ -111,14 +86,15 @@ var OrderForm = React.createClass({
 	render() {
 		return(
 			<div className='order-form'>
-				<h3>Enter order keyword:</h3>
 				<form onSubmit={this.handleSubmit}>
           <div className="input-group">
             <input
               onChange={this.changeHandler}
               value={this.state.text}
+              placeholder="Enter order keyword"
+              className="shadow"
             />
-            <div className="submit" onClick={this.handleSubmit}>Add</div>
+            <div className="submit shadow" onClick={this.handleSubmit}>+</div>
           </div>
 				</form>
 			</div>
