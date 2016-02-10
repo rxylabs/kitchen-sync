@@ -128,7 +128,12 @@ var OrderForm = React.createClass({
 var KitchenSyncApp = React.createClass({
 
 	getInitialState() {
-		return {orders:[], text: ''};
+    var savedState =  localStorage.getItem('orders');
+    var orders = [];
+    if( savedState ) {
+      orders = JSON.parse(savedState);
+    }
+		return {orders: orders, text: ''};
 	},
 
 	componentDidMount() {
@@ -147,6 +152,7 @@ var KitchenSyncApp = React.createClass({
       }
       return m;
     });
+    localStorage.setItem('orders', JSON.stringify(updatedOrders));
     this.setState({ orders: updatedOrders });
 		socket.emit('update:state', updatedOrders);
   },
@@ -159,6 +165,7 @@ var KitchenSyncApp = React.createClass({
         updatedOrders.push(m);
       }
     });
+    localStorage.setItem('orders', JSON.stringify(updatedOrders));
     this.setState({ orders: updatedOrders });
 		socket.emit('update:state', updatedOrders);
   },
@@ -167,6 +174,7 @@ var KitchenSyncApp = React.createClass({
 		var {orders} = this.state;
 
 		orders.unshift(order);
+    localStorage.setItem('orders', JSON.stringify(orders));
 		this.setState({orders});
 		socket.emit('update:state', orders);
 	},
