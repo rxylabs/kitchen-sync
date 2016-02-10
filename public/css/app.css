@@ -86,7 +86,7 @@ body {
 
 .ready {
   margin-right: 10px;
-  font-size: 43px;
+  font-size: 36px;
   color: green;
 }
 
@@ -114,9 +114,9 @@ body {
 }
 
 .input-group .submit {
-  line-height: 45px;
+  line-height: 50px;
   background: #fff;
-  font-size: 40px;
+  font-size: 50px;
   cursor: pointer;
   width: 50px;
   text-align: center;
