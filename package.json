@@ -1,6 +1,7 @@
 {
   "name": "kitchen-sync",
   "version": "0.1.0",
+  "private": true,
   "dependencies": {
     "express": "^4.13.1",
     "react": "^0.13.3",
