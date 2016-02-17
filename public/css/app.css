@@ -2,61 +2,131 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
 	margin: 0;
 	padding: 0;
-	font-family: sans-serif;
-  color: #333;
+  font-family: "Raleway", Helvetica, Arial, sans-serif;
+  color: #3C2221;
+  letter-spacing: 2px;
+  background: url('/img/bg.jpg') repeat;
 }
 
-.orders,
+#app {
+  height: 100%;
+  width: 80%;
+  margin: 100px auto;
+  background: url('/img/contentbg.jpg') repeat;
+  overflow: hidden;
+}
+
+.heading {
+  background: #3C2221;
+  height: 58px;
+  line-height: 58px;
+}
+
+.heading h2 {
+  font-size: 36px;
+  font-weight: normal;
+  color: #f1ebd5;
+  text-transform: capitalize;
+  text-align: center;
+  margin-top: 0;
+}
+
+.heading img {
+  float: left;
+  height: 95px;
+  position: absolute;
+  top: 75px;
+}
+
 .order-form {
-	margin: 15px;
-	border : 1px solid black;
-	padding: 15px;
+  margin: 40px 20px;
+}
+
+.shadow {
+  box-shadow: 0 2px 7px 1px rgba(0,0,0,0.5);
+}
+
+.orders-box {
+  width: 100%;
+  overflow: hidden;
+  padding: 0 20px;
 }
 
 .order {
-  border: 1px solid silver;
-  padding: 10px;
-  margin: 5px;
-  overflow: hidden;
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
 .text {
+  background: #fff;
   font-size: 25px;
-  line-height: 40px;
-  float: left;
-  display: inline-block;
+  line-height: 50px;
+  padding: 0 15px;
+  flex: 1;
 }
 
 .order .btn {
-  width: 150px;
-}
-
-.button-box {
-  float: right;
-  overflow: hidden;
+  width: 50px;
+  background: #fff;
 }
 
 .btn {
   cursor: pointer;
-  border: 1px solid #eee;
-  border-radius: 3px;
-  display: inline-block;
   text-align: center;
-  padding: 10px 20px;
-  margin: 0 10px;
 }
 
-.btn:hover,
-.btn:active {
-  background: #eee;
+.ready {
+  margin-right: 10px;
+  font-size: 36px;
+  color: green;
 }
 
-.order-form input {
-  line-height: 32px;
+.delete {
+  margin-left: 10px;
+  font-size: 40px;
+  line-height: 50px;
+  color: red;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.input-group input {
+  line-height: 50px;
   font-size: 18px;
-  width: 250px;
-  padding: 0 5px;
+  padding: 0 15px;
+  outline: none;
+  border: none;
+  margin: 0;
+  flex: 1;
 }
+
+.input-group .submit {
+  line-height: 50px;
+  background: #fff;
+  font-size: 50px;
+  cursor: pointer;
+  width: 50px;
+  text-align: center;
+  float: right;
+  margin-left: 10px;
+}
+
+.input-group .submit:hover,
+.input-group .submit:active {
+  background: #3C2221;
+  color: #fff;
+}
+
