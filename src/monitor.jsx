@@ -5,28 +5,28 @@ var React = require('react');
 var socket = io.connect();
 
 var Order = React.createClass({
-	render() {
-		return <div className='order'>{this.props.text}</div>;
-	}
+  render() {
+    return <div className='order'>{this.props.text}</div>;
+  }
 });
 
 var MonitorSyncApp = React.createClass({
 
-	getInitialState() {
-		return {orders:[]};
-	},
+  getInitialState() {
+    return {orders:[]};
+  },
 
-	componentDidMount() {
-		socket.on('update:state', this._setOrderState);
-	},
+  componentDidMount() {
+    socket.on('update:state', this._setOrderState);
+  },
 
   _setOrderState(orders) {
     this.setState({orders});
   },
 
 
-	render() {
-		return (
+  render() {
+    return (
       <div className="orders-box">
         <div className="heading">
           <img src="/img/logo.svg" /> 
@@ -47,8 +47,8 @@ var MonitorSyncApp = React.createClass({
           } 
         </div>
       </div>
-		);
-	}
+    );
+  }
 });
 
 React.render(<MonitorSyncApp/>, document.getElementById('app'));

@@ -1,7 +1,6 @@
 'use strict';
 
 var React = require('react');
-
 var socket = io.connect();
 
 var Order = React.createClass({
@@ -13,46 +12,46 @@ var Order = React.createClass({
     this.props.handleOrderDelete(this.props.orderID);
   },
 
-	render() {
-		return (
-			<div className='order'>
+  render() {
+    return (
+      <div className='order'>
         <div className='btn ready shadow' onClick={this.toggleOrderStatus}>{this.props.ready ? '✔' : ''}</div>
         <div className='text shadow'>{this.props.text}</div>
         <div className='btn delete shadow' onClick={this.handleOrderDelete}>X</div>
-			</div>
-		);
-	}
+      </div>
+    );
+  }
 });
 
 var OrderList = React.createClass({
-	render() {
-		return (
+  render() {
+    return (
       <div className="orders-box">
-      {
-        this.props.orders.map((order) => {
-          return (
-            <Order
-              key={order.id}
-              text={order.text} 
-              orderID={order.id}
-              ready={order.ready}
-              timestamp={order.timestamp}
-              toggleOrderStatus={this.props.toggleOrderStatus}
-              handleOrderDelete={this.props.handleOrderDelete}
-            />
-          );
-        })
-      } 
+        {
+          this.props.orders.map((order) => {
+            return (
+              <Order
+                key={order.id}
+                text={order.text} 
+                orderID={order.id}
+                ready={order.ready}
+                timestamp={order.timestamp}
+                toggleOrderStatus={this.props.toggleOrderStatus}
+                handleOrderDelete={this.props.handleOrderDelete}
+              />
+            );
+          })
+        } 
       </div>
-		);
-	}
+    );
+  }
 });
 
 var OrderForm = React.createClass({
 
-	getInitialState() {
-		return {text: ''};
-	},
+  getInitialState() {
+    return {text: ''};
+  },
 
   getTimeStamp() {
     var a = new Date();
@@ -65,7 +64,7 @@ var OrderForm = React.createClass({
     return Math.floor(Math.random() * 5) + '' + +new Date();
   },
 
-	handleSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault();
     if (this.state.text !== '') {
       var order = {
@@ -77,16 +76,16 @@ var OrderForm = React.createClass({
       this.props.onOrderSubmit(order);	
       this.setState({ text: '' });
     }
-	},
+  },
 
-	changeHandler(e) {
-		this.setState({ text : e.target.value });
-	},
+  changeHandler(e) {
+    this.setState({ text : e.target.value });
+  },
 
-	render() {
-		return(
-			<div className='order-form'>
-				<form onSubmit={this.handleSubmit}>
+  render() {
+    return(
+      <div className='order-form'>
+        <form onSubmit={this.handleSubmit}>
           <div className="input-group">
             <input
               onChange={this.changeHandler}
@@ -96,27 +95,27 @@ var OrderForm = React.createClass({
             />
             <div className="submit shadow" onClick={this.handleSubmit}>+</div>
           </div>
-				</form>
-			</div>
-		);
-	}
+        </form>
+      </div>
+    );
+  }
 });
 
 
 var KitchenSyncApp = React.createClass({
 
-	getInitialState() {
+  getInitialState() {
     var savedState =  localStorage.getItem('orders');
     var orders = [];
     if( savedState ) {
       orders = JSON.parse(savedState);
     }
-		return {orders: orders, text: ''};
-	},
+    return {orders: orders, text: ''};
+  },
 
-	componentDidMount() {
-		socket.on('update:state', this._setOrderState);
-	},
+  componentDidMount() {
+    socket.on('update:state', this._setOrderState);
+  },
 
   _setOrderState(orders) {
     this.setState({orders});
@@ -132,7 +131,7 @@ var KitchenSyncApp = React.createClass({
     });
     localStorage.setItem('orders', JSON.stringify(updatedOrders));
     this.setState({ orders: updatedOrders });
-		socket.emit('update:state', updatedOrders);
+    socket.emit('update:state', updatedOrders);
   },
 
   handleOrderDelete(orderID) {
@@ -145,37 +144,37 @@ var KitchenSyncApp = React.createClass({
     });
     localStorage.setItem('orders', JSON.stringify(updatedOrders));
     this.setState({ orders: updatedOrders });
-		socket.emit('update:state', updatedOrders);
+    socket.emit('update:state', updatedOrders);
   },
 
-	handleOrderSubmit(order) {
-		var {orders} = this.state;
+  handleOrderSubmit(order) {
+    var {orders} = this.state;
 
-		orders.unshift(order);
+    orders.unshift(order);
     localStorage.setItem('orders', JSON.stringify(orders));
-		this.setState({orders});
-		socket.emit('update:state', orders);
-	},
+    this.setState({orders});
+    socket.emit('update:state', orders);
+  },
 
 
-	render() {
-		return (
-			<div>
+  render() {
+    return (
+      <div>
         <div className="heading">
           <img src="/img/logo.svg" /> 
           <h2>Order Entry</h2>
         </div>
-				<OrderForm
-					onOrderSubmit={this.handleOrderSubmit}
-				/>
+        <OrderForm
+          onOrderSubmit={this.handleOrderSubmit}
+        />
         <OrderList
           orders={this.state.orders}
           toggleOrderStatus={this.toggleOrderStatus}
           handleOrderDelete={this.handleOrderDelete}
         />
-			</div>
-		);
-	}
+      </div>
+    );
+  }
 });
 
 React.render(<KitchenSyncApp/>, document.getElementById('app'));
